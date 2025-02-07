@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { TaxPipe } from './pipes/tax.pipe'
 import { HighlightDirective } from './highlight.directive'
+import { LocalStorageService } from './services/local-storage.service';
 
 import { HomePage } from './home/home.page'
 import { LoginComponent } from './components/login/login.component'
@@ -32,7 +33,9 @@ import {ReactiveFormsModule} from '@angular/forms';
     TaxPipe ,
     HighlightDirective,
     ReactiveFormsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    LocalStorageService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
