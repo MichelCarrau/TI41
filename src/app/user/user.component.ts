@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageService } from '../services/local-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -18,7 +20,10 @@ export class UserComponent  implements OnInit {
   public amount: number = 123456;
   public todayIs: Date = new Date();
 
-  constructor() { }
+  constructor(
+    private localStorageService: LocalStorageService,
+    private router: Router
+  ) { }
 
   color = '';
 
@@ -32,6 +37,11 @@ export class UserComponent  implements OnInit {
     this.alertMessage = event;
     this.isAlertOpen = !this.isAlertOpen;
     alert(event);
+  }
+
+  logOut() {
+    this.localStorageService.setItem('logedIn', false);
+    this.router.navigate(['/login']);
   }
 
 }
